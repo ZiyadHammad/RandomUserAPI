@@ -14,7 +14,7 @@ const randomUser = async () => {
   userList.append(userDiv)
 
   let firstName = document.createElement("h3")
-  firstName.textContent = (userData.name.first)
+  firstName.textContent = userData.name.first
   userDiv.append(firstName)
 
   let lastName = document.createElement("h3")
@@ -25,8 +25,21 @@ const randomUser = async () => {
   userImg.setAttribute(`src`, userData.picture.thumbnail)
   userDiv.append(userImg)
 
-  
+  let userAge = document.createElement("h6")
+  userAge.textContent = userData.dob.age
+  userDiv.append(userAge)
 
 
 }
 randomUser()
+
+function removeUser() {
+  while (userList.lastChild) {
+    userList.removeChild(userList.lastChild)
+  }
+}
+
+randomButton.addEventListener("click", () => {
+  removeUser()
+  randomUser()
+})
